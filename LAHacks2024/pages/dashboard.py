@@ -5,13 +5,14 @@ from LAHacks2024.templates import template
 import reflex as rx
 
 class FormState(rx.State):
-    form_data = {}
-
+    form_data = {},
+    globally_avavilable_packages: list[dict[str, str]] = []
 
     def handle_submit(self, form_data: dict):
-
+        self.globally_avavilable_packages.append(form_data)
         print(form_data)
-        self.form_data = list(form_data.values())
+        print("globally_avavilable_packages ", self.globally_avavilable_packages)
+        return rx.window_alert("Data Submitted!!!!")
 
 
 @template(route="/dashboard", title="Add Package")
@@ -40,12 +41,11 @@ def dashboard():
                     width="15em"
                 ),
                 rx.button("Submit", type="submit"),
+                paddingTop="2rem"
             ),
+
             on_submit=FormState.handle_submit,
             reset_on_submit=True,
         ),
-        rx.divider(),
-        rx.heading("Results"),
-        rx.text("Package Added: " + FormState.form_data.to_string()),
-
     )
+

@@ -2,8 +2,6 @@
 from uagents import Agent, Model
 
 
-
-
 class Message(Model):
     text: str
 
