@@ -12,7 +12,7 @@ class FormState(rx.State):
         self.globally_avavilable_packages.append(form_data)
         print(form_data)
         print("globally_avavilable_packages ", self.globally_avavilable_packages)
-        return rx.window_alert("Data Submitted!!!!")
+        return rx.window_alert("Package Information Added")
 
 
 @template(route="/dashboard", title="Add Package")

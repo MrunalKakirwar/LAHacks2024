@@ -1,2 +1,2 @@
-auth_token="b3dda7ee33e4ad0e98185a711c6efb3a"
+auth_token="eb5cd88bdc662802525b490e156dab73"
 account_sid = "AC0bdab2d35e0b52a9da91e413294c42dc"

@@ -7,8 +7,11 @@ import random
 owner = Agent(name="owner", seed="owneraniket1",port=8002, mailbox='f12bb3b3-1b10-4292-b9e0-67f7c9e34cce@https://agentverse.ai')
 print(owner.address)
 
+# class DiceRoll(Model):
+#     num_rolls: int = Field(description="How much incentive you expect?")
+
 class DiceRoll(Model):
-    num_rolls: int = Field(description="Give Incentive number ")
+    pkg: int = Field(description="How many packages you wish to deliver?")
 
 class Message(Model):
     text: str
@@ -21,8 +24,8 @@ async def message_handler(ctx: Context, sender: str, msg: Message):
 
 @dice_roll_protocol.on_message(model=DiceRoll, replies={UAgentResponse})
 async def roll_dice(ctx: Context, sender: str, msg: DiceRoll):
-    result = ", ".join([str(random.randint(6, 10)) for _ in range(msg.num_rolls)])
-    message = f"Dice roll results: {result}"
+    result = ", ".join([str(random.randint(6, 10)) for _ in range(msg.pkg)])
+    message = f"Expected Incentive: {result}"
     await ctx.send(
         sender, UAgentResponse(message=message, type=UAgentResponseType.FINAL)
     )

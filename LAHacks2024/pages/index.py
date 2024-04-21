@@ -26,7 +26,7 @@ class traveler_data(rx.State):
         available_pack = await self.get_state(FormState)
         print("can access ", available_pack.globally_avavilable_packages)
 
-        return rx.window_alert("Package Information added")
+        return rx.window_alert("Data Submitted")
 
     def toggle_flag(self):
         self.flag = not self.flag
