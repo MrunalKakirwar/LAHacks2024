@@ -22,7 +22,7 @@ def sidebar_header() -> rx.Component:
                 color_scheme="gray",
                 variant="soft",
             ),
-            href="https://github.com/MrunalKakirwar/LAHacks2024",
+            href="https://github.com/MrunalKakirwar",
         ),
         align="center",
         width="100%",
