@@ -1,7 +1,7 @@
 """The settings page."""
 
 from LAHacks2024.templates import ThemeState, template
-
+import creds
 import reflex as rx
 
 from uagents import Agent, Model
@@ -29,7 +29,7 @@ class WhatsappNotif(rx.State):
         from twilio.rest import Client
 
         account_sid = 'AC0bdab2d35e0b52a9da91e413294c42dc'
-        auth_token = 'b3dda7ee33e4ad0e98185a711c6efb3a'
+        auth_token = creds.auth_token
         client = Client(account_sid, auth_token)
 
         message = client.messages.create(
