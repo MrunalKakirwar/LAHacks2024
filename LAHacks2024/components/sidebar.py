@@ -13,7 +13,8 @@ def sidebar_header() -> rx.Component:
     """
     return rx.hstack(
         # The logo.
-        rx.heading("Go Green", size="8"),
+        rx.heading("Go Green", size="8",color_scheme='green'),
+        rx.avatar(src="/electric-car.png",size='5'),
         rx.spacer(),
         rx.link(
             rx.button(
@@ -21,7 +22,7 @@ def sidebar_header() -> rx.Component:
                 color_scheme="gray",
                 variant="soft",
             ),
-            href="https://github.com/reflex-dev/reflex",
+            href="https://github.com/MrunalKakirwar/LAHacks2024",
         ),
         align="center",
         width="100%",

@@ -23,6 +23,23 @@ class PackageState(rx.State):
         if self.response != "":
             self.response = "Package was picked up."
 
+class WhatsappNotif(rx.State):
+    
+    def sending_update(self):
+        from twilio.rest import Client
+
+        account_sid = 'AC0bdab2d35e0b52a9da91e413294c42dc'
+        auth_token = 'b3dda7ee33e4ad0e98185a711c6efb3a'
+        client = Client(account_sid, auth_token)
+
+        message = client.messages.create(
+        from_='whatsapp:+14155238886',
+        body='Your Package was delivered!',
+        to='whatsapp:+16575259745'
+        )
+
+        print(message.sid)
+
 
 @template(route="/settings", title="Profile")
 def settings() -> rx.Component:
@@ -56,12 +73,20 @@ def settings() -> rx.Component:
                             spacing="4"
                         ),
                         rx.flex(
-                            rx.button("Push notification",type='submit', on_click=PackageState.test_msg, color_scheme="green"),
-                            rx.text(PackageState.response),
+                            rx.button("Push notification",type='submit', on_click=PackageState.test_msg, color_scheme="yellow"),
+                            
+                            rx.button("Whatsapp notification update", color_scheme="green",on_click=WhatsappNotif.sending_update),
+                            spacing="3",
+                            paddingTop="1em",
                             justify="end"
+                        ),
+                        rx.text(
+                            PackageState.response,
+                            spacing="2",
                         ),
                         spacing="2",
                         paddingTop="1em",
+                        paddingBottom="1em"
                     ),
                     spacing="2",
                 ),

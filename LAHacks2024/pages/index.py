@@ -7,10 +7,10 @@ from .dashboard import FormState
 
 import reflex as rx
 
-from uagents import Agent, Model
+# from uagents import Agent, Model
 
-class Message(Model):
-    text: str
+# class Message(Model):
+#     text: str
 
 class traveler_data(rx.State):  
     form_data = {},
@@ -26,7 +26,7 @@ class traveler_data(rx.State):
         available_pack = await self.get_state(FormState)
         print("can access ", available_pack.globally_avavilable_packages)
 
-        return rx.window_alert("Data Submitted!!!!")
+        return rx.window_alert("Package Information added")
 
     def toggle_flag(self):
         self.flag = not self.flag
