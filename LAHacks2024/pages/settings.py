@@ -27,19 +27,19 @@ class WhatsappNotif(rx.State):
     
     def sending_update(self):
         print("inside twilio class func")
-        # from twilio.rest import Client
+        from twilio.rest import Client
 
-        # account_sid = auths.account_sid
-        # auth_token = auths.auth_token
-        # client = Client(account_sid, auth_token)
+        account_sid = auths.account_sid
+        auth_token = auths.auth_token
+        client = Client(account_sid, auth_token)
 
-        # message = client.messages.create(
-        # from_='whatsapp:+14155238886',
-        # body='Your Package was delivered!',
-        # to='whatsapp:+16575259745'
-        # )
+        message = client.messages.create(
+        from_='whatsapp:+14155238886',
+        body='Your Package was delivered!',
+        to='whatsapp:+16575259745'
+        )
 
-        # print(message.sid)
+        print(message.sid)
 
 
 @template(route="/settings", title="Profile")
